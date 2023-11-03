@@ -53,30 +53,32 @@
 
 
 
-            <form class="form-inline text-center" #categoryForm='ngForm' (ngSubmit)="onSubmit(categoryForm)">
+            <form [formGroup]="agregadosForm" class="form-inline text-center" (ngSubmit)="onSubmit()">
 
-              <div class="form-group col-md-10">
-
-                <input type="text" name="cod" class="form-control shadow-effect" placeholder="Adicione o Código do Agregado"
+              <div class="form-group col-md-10 mb-3">
+                <label>Cod</label>
+                <input type="text" formControlName="cod" class="form-control shadow-effect" placeholder="Adicione o Código do Agregado"
                  >
+                 </div>
 
-                  <input type="text" name="nome" class="form-control shadow-effect" placeholder="Adicione o Nome do Agregado"
-                  >
-
-                  <input type="text" name="descricao" class="form-control shadow-effect" placeholder="Adicione a Descrição do Agregado"
-                  >
-
-                  <input type="text" name="saldo_atual" class="form-control shadow-effect" placeholder="Adicione o Saldo atual do Agregado"
-                 >
-
-
-
-
-              </div>
+                 <div class="form-group col-md-10 mb-3">
+                  <label>Nome do Agregado</label>
+                  <input type="text" formControlName="nome" class="form-control shadow-effect" placeholder="Adicione o nome do Agregado"
+                   >
+                   </div>
+                   <div class="form-group col-md-10 mb-3">
+                    <label>Descrição do Agregado</label>
+                    <input type="text" formControlName="descricao" class="form-control shadow-effect" placeholder="Adicione a descrição do Agregado"
+                     >
+                     </div>
+                     <div class="form-group col-md-10 mb-3">
+                      <label>Saldo Atual</label>
+                      <input type="number" formControlName="saldo_atual" class="form-control shadow-effect" placeholder="Adicione o saldo atual do Agregado"
+                       >
+                       </div>
 
               <div class="col-md-2">
-                <button class="btn btn-block btn-info mb-2 btn-theme" [disabled]="categoryForm.invalid"> {{formStatus}}
-                  Categorias</button>
+                <button class="btn btn-block btn-info mb-2 btn-theme"> {{formStatus}}Categorias</button>
               </div>
             </form>
           </div>

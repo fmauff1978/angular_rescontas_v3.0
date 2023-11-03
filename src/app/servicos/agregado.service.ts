@@ -1,5 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Agregado } from '../modelos/agregado';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,10 @@ export class AgregadoService implements OnInit {
   constructor(private fs: AngularFirestore) { }
 
 
-async saveData(modelo: any){
 
-  const res =await this.fs.collection('contas').add(modelo);
+async saveData(agregado: Agregado){
+
+  const res =await this.fs.collection('agregados').add(agregado);
   console.log('Documento criado com ID: ', res.id);
 
 }
@@ -35,5 +37,5 @@ updateData(id: string | undefined, EditData: Partial<unknown>){
   ngOnInit(): void {
 
   }
-  
+
 }

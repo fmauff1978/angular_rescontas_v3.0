@@ -14,7 +14,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -29,6 +29,7 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+     ReactiveFormsModule,
     FormsModule,
     AngularFireModule.initializeApp({"projectId":"contas-27a8b","appId":"1:549391682813:web:541256ea0c386ad9470294","storageBucket":"contas-27a8b.appspot.com","apiKey":"AIzaSyCT7opLET0lDWqHM7Yw2FLgzPkn7CJGNcU","authDomain":"contas-27a8b.firebaseapp.com","messagingSenderId":"549391682813"}),
 
