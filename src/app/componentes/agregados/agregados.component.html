@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body id="myPage">
+
+
+
+
+
+
+
+    <!--<div class="pesquisa">
+    <div *ngFor="let agregado of agregados" class="card text-bg-dark mb-3 row align-items-center row row-cols-1 row-cols-md-3">
+      <div class="row row-cols-1 row-cols-md-2">
+        <div class="card h-100">
+                    <div class="card-body">
+            <h5 class="card-title card text-center text-white bg-dark">{{agregado.agregado}}</h5>
+            <p class="card-text card text-center text-white bg-dark">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+        </div>
+      </div>-->
+
+
+
+
+
+<div class="w3-row-padding w3-center w3-padding-64"  id="pricing">
+    <h2>SALDOS AGREGADOS</h2>
+
+ <!--   <div  *ngFor="let agregado of agregados" class="w3-third w3-margin-bottom">
+      <ul class="w3-ul w3-border w3-hover-shadow">
+        <li class="w3-theme">
+          <p class="w3-xlarge">{{agregado.agregado}}</p>
+        </li>
+        <li class="w3-padding-16"><b>{{agregado.saldo|currency}}</b></li>
+        </ul>
+      </div>-->
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-md-12 bg-secondary-theme p-5">
+
+            <h3 class="text-center text-theme-primary">{{formStatus}} Novo Agregado</h3>
+
+
+
+            <form class="form-inline text-center" #categoryForm='ngForm' (ngSubmit)="onSubmit(categoryForm)">
+
+              <div class="form-group col-md-10">
+
+                <input type="text" name="cod" class="form-control shadow-effect" placeholder="Adicione o Código do Agregado"
+                 >
+
+                  <input type="text" name="nome" class="form-control shadow-effect" placeholder="Adicione o Nome do Agregado"
+                  >
+
+                  <input type="text" name="descricao" class="form-control shadow-effect" placeholder="Adicione a Descrição do Agregado"
+                  >
+
+                  <input type="text" name="saldo_atual" class="form-control shadow-effect" placeholder="Adicione o Saldo atual do Agregado"
+                 >
+
+
+
+
+              </div>
+
+              <div class="col-md-2">
+                <button class="btn btn-block btn-info mb-2 btn-theme" [disabled]="categoryForm.invalid"> {{formStatus}}
+                  Categorias</button>
+              </div>
+            </form>
+          </div>
+
+
+        <!-- <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <div class="card-body">
+
+              <table class="table row-border hover">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Category</th>
+
+                    <th>Criado em</th>
+                    <th>Ações</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr *ngFor='let cat of agregados$|async; let i = index'>
+                    <td> {{i+1}}</td>
+                    <td> {{cat.category}}</td>
+                    <td> {{cat.criado_em.seconds * 1000 | date: 'dd/MM/yyyy HH:mm'}}</td>
+                    <td> <i class="bi bi-pencil" (click)="onEdit(cat.id)"></i> <i class="bi bi-trash3"
+                        (click)="onDelete(cat.id)"></i> </td>
+
+
+
+
+                  </tr>
+                </tbody>
+
+
+              </table>
+
+
+
+            </div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "contas-27a8b": {
+      "hosting": {
+        "angular_rescontas_v3.0": [
+          "contas-27a8b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "contas-27a8b"
+  }
+}
