@@ -1,3 +1,4 @@
+import { CriarAgregadoComponent } from './criar-agregado/criar-agregado.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContasComponent } from './componentes/contas/contas.component';
@@ -8,7 +9,9 @@ const routes: Routes = [
 
   {path: 'contas', component: ContasComponent},
   {path: 'lctos', component: LancamentosComponent},
-  {path: 'agregados', component: AgregadosComponent}
+  {path: 'agregados', component: AgregadosComponent},
+  {path: 'criar-agregados', component: CriarAgregadoComponent}
+
 
 ];
 

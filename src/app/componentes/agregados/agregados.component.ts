@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup,ReactiveFormsModule , Validators } from '@angula
 
 
 import { Component, OnInit } from '@angular/core';
-import { Observable, async } from 'rxjs';
+import { Observable, async, map } from 'rxjs';
 import { Agregado } from 'src/app/modelos/agregado';
 import { AgregadoService } from 'src/app/servicos/agregado.service';
 
@@ -22,44 +22,38 @@ formCategory: string | undefined;
 formStatus: string = "Adicionar";
 agregadoId: string | undefined;
 
-  agregadosForm!: FormGroup;
 
 
-
-  constructor( private as: AgregadoService, private fs: AngularFirestore, private fb: FormBuilder) { }
+  constructor( private as: AgregadoService, private fs: AngularFirestore) { }
 
   ngOnInit(){
 
-this.agregForm();
+    this.agregados$ =this.fs.collection('agregados', (ref) => ref.orderBy('cod', 'asc')).get().pipe(map((result)=> this.convertSnaps<Agregado>(result)));
+
+
+
+    console.log(this.agregados$)
+
+
   }
 
 
-agregForm(){
+  convertSnaps<T>(results){
 
-  this.agregadosForm = this.fb.group({
-    cod: [' '],
-    nome: [' '],
-  descricao: [" "],
- saldo_atual: [' '],
- log: new Date()
 
-  })}
-
-  ResetForm(){
-
-    this.agregadosForm.reset();
-  }
+    return <T[]> results.docs.map(snap=>{
+      return{
+        id:snap.id,
+        ...<any> snap.data()
 
 
 
-  onSubmit(){
+   }
+    })
+   }
 
 
-    this.as.saveData(this.agregadosForm.value);
 
-    console.log("Dcoumentos" + this.agregadosForm + "incluidos com sucesso");
-
-    this.ResetForm();
 
 
 
@@ -81,7 +75,7 @@ agregForm(){
 
 
 
-    }
+
 
 
 

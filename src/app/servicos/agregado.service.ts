@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Agregado } from '../modelos/agregado';
@@ -8,8 +9,10 @@ import { Agregado } from '../modelos/agregado';
 export class AgregadoService implements OnInit {
 
 
+  agregados$!: Observable<Agregado>;
 
-  constructor(private fs: AngularFirestore) { }
+
+  constructor(private fs: AngularFirestore, ) { }
 
 
 
@@ -36,6 +39,12 @@ updateData(id: string | undefined, EditData: Partial<unknown>){
 
   ngOnInit(): void {
 
+
   }
+
+
+
+
+
 
 }
