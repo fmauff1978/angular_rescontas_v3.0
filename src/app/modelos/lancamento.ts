@@ -1,4 +1,5 @@
-import { Conta } from "./conta";
+import { Conta, MyDate } from "./conta";
+import {Timestamp} from 'firebase/firestore';
 
 
 
@@ -7,10 +8,11 @@ export interface Lancamento {
 
   id: string;
   cod: number;
-  datadolançamento: Date;
+  datadolancamento: Date;
   descricao: string;
-  conta: Conta;
+  conta_debitada: Conta;
+  conta_creditada: Conta;
   valor: number;
-  log: Date;
+  log: MyDate;
 
 }

@@ -1,0 +1,53 @@
+<div class="w3-row-padding w3-center w3-padding-64"  id="pricing">
+
+  <div class="container">
+
+   <div class="row">
+
+     <div class="col-md-12 bg-secondary-theme p-5">
+
+       <h3 class="text-center text-theme-primary">{{formStatus}} Novo Agregado</h3>
+
+
+
+       <form [formGroup]="lctosForm" class="form-inline text-center" (ngSubmit)="onSubmit()">
+
+         <div class="form-group col-md-10 mb-3">
+           <label>Cod</label>
+           <input type="number" formControlName="cod" class="form-control shadow-effect" placeholder="Adicione o Código do Lançamento"
+            >
+            </div>
+
+            <div class="form-group col-md-10 mb-3">
+             <label>Data do Lançamento</label>
+             <input type="date" formControlName="datadolancamento" class="form-control shadow-effect" placeholder="Data em que o lcto ocorreu"
+              >
+              </div>
+              <div class="form-group col-md-10 mb-3">
+               <label>Descrição</label>
+               <input type="text" formControlName="descricao" class="form-control shadow-effect" placeholder="Adicione a descrição do Lançamento">
+                </div>
+                <div class="form-group col-md-10 mb-3">
+                  <label>Conta Debitada</label>
+                  <input type="text" formControlName="conta_debitada" class="form-control shadow-effect" placeholder="Adicione a conta"
+                   >
+                   </div>
+
+                   <div class="form-group col-md-10 mb-3">
+                    <label>Conta Creditada</label>
+                    <input type="text" formControlName="conta_creditada" class="form-control shadow-effect" placeholder="Adicione a conta"
+                     >
+                     </div>
+
+                <div class="form-group col-md-10 mb-3">
+                 <label>Valor</label>
+                 <input type="number" formControlName="valor" class="form-control shadow-effect" placeholder="Adicione o valor da transacao"
+                  >
+                  </div>
+
+         <div class="col-md-2">
+           <button class="btn btn-block btn-info mb-2 btn-theme"> {{formStatus}} Lançamento</button>
+         </div>
+       </form>
+     </div>
+

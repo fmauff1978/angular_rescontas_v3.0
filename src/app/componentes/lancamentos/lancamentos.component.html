@@ -2,15 +2,16 @@
   <h2 class="ff-inter">Meus Lancamentos</h2>
 </header>
 
-<!--<div class="table-responsive">
+<div class="table-responsive">
   <table class="table align-middle;table table-striped"  style="width:100%">
   <thead>
     <tr>
       <th>#</th>
-      <th>Numero Lcto</th>
+     
       <th>Data</th>
       <th>Lançamento</th>
-      <th>Conta</th>
+      <th>Conta Debitada</th>
+      <th>Conta Creditada</th>
       <th>Valor</th>
       <th>Gravado em</th>
 
@@ -18,16 +19,15 @@
   </thead>
   <tbody class="table-group-divider;pagination">
 
-    <tr *ngFor= "let lancamento of lancamentos" class="align-center" >
-
-      <td>{{lancamento.id}}</td>
-      <td>{{lancamento.nro_lcto}}</td>
-      <td align="center">{{lancamento.data}}</td>
-      <td>{{lancamento.lcto}}</td>
-      <td>{{lancamento.conta}}</td>
-      <td align="center">{{lancamento.valor|currency}}</td>
-
-      <td>{{lancamento.createdAt|date}}</td>
+    <tr *ngFor= "let lcto of lancamento$|async;let i = index " class="align-center" >
+      <th align="center">{{i+1}}</th>
+     
+      <td>{{lcto.datadolancamento | date:'dd/MM/yyyy'}}</td>
+      <td >{{lcto.descricao}}</td>
+      <td>{{lcto.conta_debitada}}</td>
+      <td>{{lcto.conta_creditada}}</td>
+      <td align="center">{{lcto.valor|currency}}</td>
+      <td>{{lcto.log.seconds * 1000|date:'dd/MM/yyyy HH:mm'}}</td>
 
 
 
@@ -41,6 +41,6 @@
 </table>
 
 
-</div>-->
+</div>
 
 

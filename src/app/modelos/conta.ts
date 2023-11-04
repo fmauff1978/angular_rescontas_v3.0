@@ -4,13 +4,13 @@
 
     id: string;
     cod: number;
-    nome: string;
+    conta: string;
     natureza: Natureza;
     enquadramento: Enqdo;
     mod_despesa: Mod_Despesa;
     ativa: boolean;
     saldo_atual: number;
-    log: Date;
+    log: MyDate;
 
 
   }
@@ -52,5 +52,8 @@
   gerenciável,
   off
 
+  }
+  export class MyDate {
+    seconds: number;
   }
 

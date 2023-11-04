@@ -1,3 +1,5 @@
+import { MyDate } from "./conta";
+
 export interface Agregado {
 
   id: string;
@@ -5,7 +7,7 @@ export interface Agregado {
   nome: string;
   descricao: string;
   saldo_atual: number;
-  log: Date;
+  log: MyDate;
 
 
 

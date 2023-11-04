@@ -19,6 +19,7 @@ import { CriarAgregadoComponent } from './criar-agregado/criar-agregado.componen
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
+import { CriarLancamentoComponent } from './criar-lancamento/criar-lancamento.component';
 
 registerLocaleData(ptBr);
 
@@ -30,7 +31,8 @@ registerLocaleData(ptBr);
     ContasComponent,
     CabecalhoComponent,
     AgregadosComponent,
-    CriarAgregadoComponent
+    CriarAgregadoComponent,
+    CriarLancamentoComponent
 
   ],
   imports: [

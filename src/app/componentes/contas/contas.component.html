@@ -3,32 +3,32 @@
   <h2 class="ff-inter">Minhas Contas</h2>
 
 </header>
-<!--<div class="table-responsive">
+<div class="table-responsive">
   <table class="table align-middle;table table-striped"  style="width:100%">
   <thead>
     <tr>
-      <th>#</th>
+    
+      <th>Código</th>
       <th>Conta</th>
       <th align="center">Natureza</th>
       <th>Enquadramento</th>
       <th>ModalidadeDespesa</th>
       <th>Saldo</th>
-      <th>Posição</th>
+     
 
     </tr>
   </thead>
   <tbody class="table-group-divider;pagination">
 
-    <tr *ngFor= "let conta of contas" class="align-center;" >
-
-      <td>{{conta.id}}</td>
-      <td>{{conta.nome}}</td>
+    <tr *ngFor= "let conta of contas$|async" class="align-center" >
+   
+      <td>{{conta.cod}}</td>
+      <td>{{conta.conta}}</td>
       <td align="center">{{conta.natureza}}</td>
       <td>{{conta.enquadramento}}</td>
       <td>{{conta.mod_despesa}}</td>
-      <td align="center">{{conta.saldo|currency}}</td>
-
-      <td>{{conta.updatedAt|date}}</td>
+      <td align="center">{{conta.saldo_atual|currency}}</td>
+      
 
 
 
@@ -56,7 +56,7 @@
       <a class="page-link" href="#">Next</a>
     </li>
   </ul>
-</nav>-->
+</nav>
 
 
 
