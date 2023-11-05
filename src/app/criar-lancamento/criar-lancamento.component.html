@@ -12,11 +12,7 @@
 
        <form [formGroup]="lctosForm" class="form-inline text-center" (ngSubmit)="onSubmit()">
 
-         <div class="form-group col-md-10 mb-3">
-           <label>Cod</label>
-           <input type="number" formControlName="cod" class="form-control shadow-effect" placeholder="Adicione o Código do Lançamento"
-            >
-            </div>
+
 
             <div class="form-group col-md-10 mb-3">
              <label>Data do Lançamento</label>
@@ -27,16 +23,31 @@
                <label>Descrição</label>
                <input type="text" formControlName="descricao" class="form-control shadow-effect" placeholder="Adicione a descrição do Lançamento">
                 </div>
+
+
                 <div class="form-group col-md-10 mb-3">
                   <label>Conta Debitada</label>
-                  <input type="text" formControlName="conta_debitada" class="form-control shadow-effect" placeholder="Adicione a conta"
-                   >
+                  <select class="form-control" formControlName = "conta_debitada">
+                    <option value=" " disabled>Selecione </option>
+                    <option *ngFor = "let cat of contas$|async" >{{cat.conta}}</option>
+
+
+                  </select>
+
+
                    </div>
 
                    <div class="form-group col-md-10 mb-3">
                     <label>Conta Creditada</label>
-                    <input type="text" formControlName="conta_creditada" class="form-control shadow-effect" placeholder="Adicione a conta"
-                     >
+                    <select class="form-control" formControlName = "conta_creditada">
+                      <option value=" " disabled>Selecione </option>
+                      <option *ngFor = "let cat of contas$|async" >{{cat.conta}}</option>
+
+
+                    </select>
+
+
+
                      </div>
 
                 <div class="form-group col-md-10 mb-3">

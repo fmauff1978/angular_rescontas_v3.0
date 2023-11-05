@@ -18,10 +18,9 @@ export class ContasComponent implements OnInit {
   constructor(private fs: AngularFirestore){}
 
     ngOnInit(){
-      this.contas$ =this.fs.collection('contas', (ref) => ref.orderBy('cod', 'asc')).get().pipe(map((result)=> this.convertSnaps<Conta>(result)));
+      this.contas$ =this.fs.collection('contas', (ref) => ref.where('ativa','==',true).orderBy('cod', 'asc')).get().pipe(map((result)=> this.convertSnaps<Conta>(result)));
 
-
-
+     
       console.log(this.contas$)
 
 

@@ -20,6 +20,12 @@ import { DEFAULT_CURRENCY_CODE, LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 import { CriarLancamentoComponent } from './criar-lancamento/criar-lancamento.component';
+import { AtivoComponent } from './contas/ativo/ativo.component';
+import { PassivoComponent } from './contas/passivo/passivo.component';
+import { DespesasComponent } from './contas/despesas/despesas.component';
+import { ReceitasComponent } from './contas/receitas/receitas.component';
+import { ResultadoComponent } from './contas/resultado/resultado.component';
+import { TodasContasComponent } from './contas/todas-contas/todas-contas.component';
 
 registerLocaleData(ptBr);
 
@@ -32,7 +38,13 @@ registerLocaleData(ptBr);
     CabecalhoComponent,
     AgregadosComponent,
     CriarAgregadoComponent,
-    CriarLancamentoComponent
+    CriarLancamentoComponent,
+    AtivoComponent,
+    PassivoComponent,
+    DespesasComponent,
+    ReceitasComponent,
+    ResultadoComponent,
+    TodasContasComponent
 
   ],
   imports: [
