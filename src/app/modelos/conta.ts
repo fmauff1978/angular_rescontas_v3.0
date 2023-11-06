@@ -9,7 +9,7 @@
     enquadramento: Enqdo;
     mod_despesa: Mod_Despesa;
     ativa: boolean;
-    saldo_atual: number;
+    saldo: number;
     log: MyDate;
 
 

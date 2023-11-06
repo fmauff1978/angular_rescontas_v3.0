@@ -1,1 +1,62 @@
-<p>ativo works!</p>
+<header class="header d-flex">
+  <h2 class="ff-inter">Ativo</h2>
+
+</header>
+<div class="table-responsive">
+  <table class="table align-middle;table table-striped"  style="width:100%">
+  <thead>
+    <tr>
+    
+      <th>Código</th>
+      <th>Conta</th>
+    
+      <th>Enquadramento</th>
+      
+      <th>Saldo</th>
+     
+
+    </tr>
+  </thead>
+  <tbody class="table-group-divider;pagination">
+
+    <tr *ngFor= "let conta of ativos$|async" class="align-center" >
+   
+      <td>{{conta.cod}}</td>
+      <td>{{conta.conta}}</td>
+     
+      <td>{{conta.enquadramento}}</td>
+      
+      <td align="center">{{conta.saldo|currency}}</td>
+      
+
+
+
+
+
+
+    </tr>
+
+
+  </tbody>
+</table>
+
+
+</div>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+
+
+
+

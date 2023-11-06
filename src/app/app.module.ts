@@ -26,6 +26,7 @@ import { DespesasComponent } from './contas/despesas/despesas.component';
 import { ReceitasComponent } from './contas/receitas/receitas.component';
 import { ResultadoComponent } from './contas/resultado/resultado.component';
 import { TodasContasComponent } from './contas/todas-contas/todas-contas.component';
+import { RazaoComponent } from './contas/razao/razao.component';
 
 registerLocaleData(ptBr);
 
@@ -44,7 +45,8 @@ registerLocaleData(ptBr);
     DespesasComponent,
     ReceitasComponent,
     ResultadoComponent,
-    TodasContasComponent
+    TodasContasComponent,
+    RazaoComponent
 
   ],
   imports: [

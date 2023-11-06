@@ -1,1 +1,46 @@
-<p>despesas works!</p>
+<header class="header d-flex">
+  <h2 class="ff-inter">Despesas</h2>
+
+</header>
+<div class="table-responsive">
+  <table class="table align-middle;table table-striped"  style="width:100%">
+  <thead>
+    <tr>
+    
+      <th>Código</th>
+      <th>Conta</th>
+    
+      <th>Enquadramento</th>
+      
+      <th>Modalidade</th>
+      
+      <th>Saldo</th>
+     
+
+    </tr>
+  </thead>
+  <tbody class="table-group-divider;pagination">
+
+    <tr *ngFor= "let conta of despesas$|async" class="align-center" >
+   
+      <td>{{conta.cod}}</td>
+      <td>{{conta.conta}}</td>
+     
+      <td>{{conta.enquadramento}}</td>
+      <td>{{conta.mod_despesa}}</td>
+      
+      <td align="center">{{conta.saldo|currency}}</td>
+      
+
+
+
+
+
+
+    </tr>
+
+
+  </tbody>
+</table>
+
+
