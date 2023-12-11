@@ -15,10 +15,10 @@ import { Lancamento } from 'src/app/modelos/lancamento';
 
 })
 export class LancamentosComponent implements OnInit {
-  
-  
+
+
   lancamento$: Observable<Lancamento[]>
- 
+
 
 
 
@@ -28,8 +28,6 @@ export class LancamentosComponent implements OnInit {
     ngOnInit(){
 
       this.lancamento$ =this.fs.collection('lancamentos', (ref) => ref.orderBy('datadolancamento', 'asc')).get().pipe(map((result)=> this.convertSnaps<Lancamento>(result)));
-
-
 
     console.log(this.lancamento$)
 

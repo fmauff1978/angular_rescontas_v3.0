@@ -13,7 +13,8 @@ import { ContasComponent } from './componentes/contas/contas.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CriarAgregadoComponent } from './criar-agregado/criar-agregado.component';
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID } from '@angular/core';
@@ -27,6 +28,9 @@ import { ReceitasComponent } from './contas/receitas/receitas.component';
 import { ResultadoComponent } from './contas/resultado/resultado.component';
 import { TodasContasComponent } from './contas/todas-contas/todas-contas.component';
 import { RazaoComponent } from './contas/razao/razao.component';
+
+
+
 
 registerLocaleData(ptBr);
 
@@ -53,6 +57,8 @@ registerLocaleData(ptBr);
     BrowserModule,
      ReactiveFormsModule,
     FormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp({"projectId":"contas-27a8b","appId":"1:549391682813:web:541256ea0c386ad9470294","storageBucket":"contas-27a8b.appspot.com","apiKey":"AIzaSyCT7opLET0lDWqHM7Yw2FLgzPkn7CJGNcU","authDomain":"contas-27a8b.firebaseapp.com","messagingSenderId":"549391682813"}),
 
     AngularFirestoreModule,

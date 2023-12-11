@@ -10,7 +10,7 @@
     mod_despesa: Mod_Despesa;
     ativa: boolean;
     saldo: number;
-    log: MyDate;
+    log: Date;
 
 
   }

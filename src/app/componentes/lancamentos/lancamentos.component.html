@@ -30,10 +30,10 @@
 
       <td>{{lcto.datadolancamento | date:'dd/MM/yyyy'}}</td>
       <td >{{lcto.descricao}}</td>
-      <td>{{lcto.conta_debitada}}</td>
-      <td>{{lcto.conta_creditada}}</td>
+      <td>{{lcto.conta_debitada.contadeb}}</td>
+      <td>{{lcto.conta_creditada.contacred}}</td>
       <td align="center">{{lcto.valor|currency}}</td>
-      <td>{{lcto.log.seconds * 1000|date:'dd/MM/yyyy HH:mm'}}</td>
+      <td>{{lcto.log.toDate() |date:'dd/MM/yyyy, HH:mm' }}</td>
 
 
 
