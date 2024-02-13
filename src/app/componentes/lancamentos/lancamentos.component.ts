@@ -27,7 +27,7 @@ export class LancamentosComponent implements OnInit {
 
     ngOnInit(){
 
-      this.lancamento$ =this.fs.collection('lancamentos', (ref) => ref.orderBy('datadolancamento', 'asc')).get().pipe(map((result)=> this.convertSnaps<Lancamento>(result)));
+      this.lancamento$ =this.fs.collection('lancamentos', (ref) => ref.orderBy('log', 'desc')).get().pipe(map((result)=> this.convertSnaps<Lancamento>(result)));
 
     console.log(this.lancamento$)
 

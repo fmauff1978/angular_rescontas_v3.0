@@ -16,9 +16,9 @@ export class PassivoComponent implements OnInit {
   constructor(private fs: AngularFirestore){}
 
     ngOnInit(){
-      this.passivos$ =this.fs.collection('contas', (ref) => ref.where('natureza','==',"passivo").where('ativa','==', true).orderBy('cod', 'asc')).get().pipe(map((result)=> this.convertSnaps<Conta>(result)));
+      this.passivos$ =this.fs.collection('contas', (ref) => ref.where('natureza','==',"passivo").where('ativa','==', true).orderBy('enquadramento', 'desc')).get().pipe(map((result)=> this.convertSnaps<Conta>(result)));
 
-     
+
       console.log(this.passivos$)
 
 

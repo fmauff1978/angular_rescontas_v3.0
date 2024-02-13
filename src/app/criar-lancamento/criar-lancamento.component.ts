@@ -10,6 +10,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Lancamento } from '../modelos/lancamento';
 import { Query, Timestamp, collection, getAggregateFromServer, query, queryEqual, sum, where } from '@angular/fire/firestore';
 
+import * as firebase from 'firebase/app';
+
 
 @Component({
   selector: 'app-criar-lancamento',
@@ -32,7 +34,7 @@ export class CriarLancamentoComponent implements OnInit {
   ngOnInit() {
     this.lancamentoForm();
     this.contas$ = this.fs
-      .collection('contas', (ref) => ref.orderBy('cod', 'asc'))
+      .collection('contas', (ref) => ref.where('ativa','==',true).orderBy('cod', 'asc'))
       .get()
       .pipe(map((result) => this.convertSnaps<Conta>(result)));
 
@@ -70,6 +72,11 @@ export class CriarLancamentoComponent implements OnInit {
     let splitted_cred = this.lctosForm.value.conta_creditada.split('-');
     console.log(splitted_deb);
     console.log(splitted_cred)
+
+    const cont_debid = splitted_deb[0];
+    const cont_cred = splitted_cred[0];
+
+
     const lctogravar: Lancamento = {
 
       datadolancamento: this.lctosForm.value.datadolancamento,
@@ -90,14 +97,18 @@ export class CriarLancamentoComponent implements OnInit {
       log: Timestamp.now()
 
 
-
-
-
     }
 
-    this.ls.saveData(lctogravar);
+    const valorainc = this.lctosForm.value.valor;
 
-    
+    this.ls.saveData(lctogravar);
+    let id = cont_debid;
+    let id2 = cont_cred;
+    let valor = valorainc;
+    this.ls.debitar(id, valor);
+    this.ls.creditar (id2, valor);
+    console.log("saldos das contas debitadas e creditadas atualizados")
+
     this.ResetForm();
 
 
