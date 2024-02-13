@@ -12,15 +12,33 @@ import { Conta } from 'src/app/modelos/conta';
 export class ReceitasComponent implements OnInit {
 
   receitas$: Observable<Conta[]>;
+  val: any = {};
+  sum: number;
 
 
   constructor(private fs: AngularFirestore){}
 
     ngOnInit(){
       this.receitas$ =this.fs.collection('contas', (ref) => ref.where('natureza','==',"receita").where('ativa','==', true).orderBy('cod', 'asc')).get().pipe(map((result)=> this.convertSnaps<Conta>(result)));
-
-     
       console.log(this.receitas$)
+
+      this.fs.collection('contas', (ref)=> ref.where('natureza', '==', 'receita')).valueChanges().subscribe(value => {
+
+
+        this.val = value;
+        console.log(this.val);
+
+
+        this.sum = this.val.reduce( function( a, b ) {
+          return a + b.saldo;
+      }, 0 );
+
+
+      console.log(this.sum)
+
+
+        })
+
 
 
 

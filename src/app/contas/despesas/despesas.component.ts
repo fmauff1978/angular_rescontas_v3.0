@@ -14,9 +14,8 @@ import { AggregateField, Firestore, collection } from 'firebase/firestore';
 export class DespesasComponent implements OnInit {
 
   despesas$: Observable<Conta[]>;
-
-  totaldeb: Observable<Lancamento[]>;
-  totalcred: Observable<[]>;
+  val: any = {};
+  sum: number;
 
 
   constructor(private fs: AngularFirestore){}
@@ -26,15 +25,23 @@ export class DespesasComponent implements OnInit {
 
       this.despesas$ =this.fs.collection('contas', (ref) => ref.where('natureza','==',"despesa").where('ativa','==', true).orderBy('enquadramento', 'asc')).get().pipe(map((result)=> this.convertSnaps<Conta>(result)));
 
-
       console.log(this.despesas$)
 
+      this.fs.collection('contas', (ref)=> ref.where('natureza', '==', 'despesa')).valueChanges().subscribe(value => {
 
 
+        this.val = value;
+        console.log(this.val);
 
+
+        this.sum = this.val.reduce( function( a, b ) {
+          return a + b.saldo;
+      }, 0 );
+
+
+      console.log(this.sum)
+        })
     }
-
-
 
  convertSnaps<T>(results){
 
@@ -44,11 +51,8 @@ export class DespesasComponent implements OnInit {
       id:snap.id,
       ...<any> snap.data()
 
-
-
  }
   })
  }
-
 
 }

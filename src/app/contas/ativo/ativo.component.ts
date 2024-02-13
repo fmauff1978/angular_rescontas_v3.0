@@ -13,32 +13,32 @@ export class AtivoComponent implements OnInit {
 
   ativos$: Observable<Conta[]>;
 
-  val: Array<object> ;
+  val: any = {};
 
-
+  sum: number;
 
   constructor(private fs: AngularFirestore){}
 
     ngOnInit(){
       this.ativos$ =this.fs.collection('contas', (ref) => ref.where('natureza','==',"ativo").orderBy('enquadramento', 'asc').orderBy('cod','asc')).get().pipe(map((result)=> this.convertSnaps<Conta>(result)));
+      console.log(this.ativos$);
 
-     this.fs.collection('contas', (ref)=> ref.where('natureza', '==', 'ativo')).valueChanges().subscribe(val => console.log(val))
-
-//    this.val = this.fs.collection('contas', (ref)=> ref.where('natureza', '==', 'ativo')).valueChanges().subscribe()
-
-     //var sum = 0;
-
-      //for(var i =0;i<this.val.length;i++){
-        //sum+=this.val[i].saldo;
-    //  } return sum
-
-    //  console.log(sum);
-
-//console.log(i);
-
-     }
+      this.fs.collection('contas', (ref)=> ref.where('natureza', '==', 'ativo')).valueChanges().subscribe(value => {
 
 
+        this.val = value;
+        console.log(this.val);
+
+
+        this.sum = this.val.reduce( function( a, b ) {
+          return a + b.saldo;
+      }, 0 );
+
+
+      console.log(this.sum)
+
+
+        })}
 
  convertSnaps<T>(results){
 
@@ -54,30 +54,9 @@ export class AtivoComponent implements OnInit {
    //this.fs.collection('contas', (ref)=> ref.where('natureza', '==', 'ativo')).valueChanges().subscribe(val => console.log(val))
 
 
-   sumQuantity()
-   {
-       var elements = document.getElementsByClassName('valor');
-       var sum = 0;
-       let i : number;
+   sumQuantity() {
 
-       for (i=0;i< elements.length;i++)
-       {
-           sum += parseFloat(elements[i].innerHTML.replace(/,/,'.').replace('R$',''));
-       };
+     }
 
-
-       console.log(sum)
    }
-
-
-
-
-
-
-
-
-
-}
-
-
 
