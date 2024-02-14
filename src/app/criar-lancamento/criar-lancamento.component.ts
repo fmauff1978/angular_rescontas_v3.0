@@ -104,25 +104,20 @@ export class CriarLancamentoComponent implements OnInit {
     this.ls.saveData(lctogravar);
     let id = cont_debid;
     let id2 = cont_cred;
+    
     let valor = valorainc;
     this.ls.debitar(id, valor);
     this.ls.creditar (id2, valor);
+
+
+
+
     console.log("saldos das contas debitadas e creditadas atualizados")
 
     this.ResetForm();
 
 
   }
-
-
-
-
-
-
-
-
-
-
 
 
   async consultarSaldo(){

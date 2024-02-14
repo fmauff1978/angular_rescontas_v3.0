@@ -2,10 +2,10 @@ import { Lancamento } from './../modelos/lancamento';
 import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { FieldValue } from 'firebase/firestore';
+import { FieldValue, Timestamp } from 'firebase/firestore';
 import { ToastrService } from 'ngx-toastr';
 
-import { increment } from '@angular/fire/firestore';
+import { increment, serverTimestamp } from '@angular/fire/firestore';
 
 
 
@@ -42,6 +42,43 @@ creditar(id2, valor){
   debito.update({saldo: increment((-1)*valor)});
 
   }
+
+  atualizarativo ( valor){
+
+
+    let debito = this.fs.collection('agregados').doc('UQaBjTeHnn0OFKsWqL1b');
+
+    debito.update({saldo_atual:(valor)});
+    debito.update({log: (new Date())})
+
+
+  }
+
+  atualizarpassivo ( valor){
+
+
+    let debito = this.fs.collection('agregados').doc('5sZmf4Rb1XJSelYK4yWw');
+
+    debito.update({saldo_atual:(valor)});
+    debito.update({log: (new Date())})
+
+
+  }
+
+
+  atualizarresultado ( valor){
+
+
+    let debito = this.fs.collection('agregados').doc('XRmnPtKzi8VJQA6SmWLD');
+
+    debito.update({saldo_atual:(valor)});
+    debito.update({log: (new Date())})
+
+
+  }
+
+
+
 
 
 

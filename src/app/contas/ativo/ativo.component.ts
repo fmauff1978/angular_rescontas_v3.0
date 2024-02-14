@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, map } from 'rxjs';
 import { Conta } from 'src/app/modelos/conta';
+import { LancamentoService } from 'src/app/servicos/lancamento.service';
 
 @Component({
   selector: 'app-ativo',
@@ -12,12 +13,11 @@ import { Conta } from 'src/app/modelos/conta';
 export class AtivoComponent implements OnInit {
 
   ativos$: Observable<Conta[]>;
-
   val: any = {};
-
   sum: number;
+  valor: number;
 
-  constructor(private fs: AngularFirestore){}
+  constructor(private fs: AngularFirestore, private ls: LancamentoService){}
 
     ngOnInit(){
       this.ativos$ =this.fs.collection('contas', (ref) => ref.where('natureza','==',"ativo").orderBy('enquadramento', 'asc').orderBy('cod','asc')).get().pipe(map((result)=> this.convertSnaps<Conta>(result)));
@@ -37,6 +37,10 @@ export class AtivoComponent implements OnInit {
 
       console.log(this.sum)
 
+      this.ls.atualizarativo(this.sum)
+
+      console.log('ativo atualizado com sucesso')
+
 
         })}
 
@@ -54,9 +58,5 @@ export class AtivoComponent implements OnInit {
    //this.fs.collection('contas', (ref)=> ref.where('natureza', '==', 'ativo')).valueChanges().subscribe(val => console.log(val))
 
 
-   sumQuantity() {
-
-     }
-
-   }
+}
 

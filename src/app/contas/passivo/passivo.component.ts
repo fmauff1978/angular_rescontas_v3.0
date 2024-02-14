@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, map } from 'rxjs';
 import { Conta } from 'src/app/modelos/conta';
+import { LancamentoService } from 'src/app/servicos/lancamento.service';
 
 @Component({
   selector: 'app-passivo',
@@ -15,7 +16,7 @@ export class PassivoComponent implements OnInit {
   sum: number;
 
 
-  constructor(private fs: AngularFirestore){}
+  constructor(private fs: AngularFirestore, private ls: LancamentoService){}
 
     ngOnInit(){
       this.passivos$ =this.fs.collection('contas', (ref) => ref.where('natureza','==',"passivo").where('ativa','==', true).orderBy('enquadramento', 'desc')).get().pipe(map((result)=> this.convertSnaps<Conta>(result)));
@@ -34,6 +35,10 @@ export class PassivoComponent implements OnInit {
 
 
       console.log(this.sum)
+
+      this.ls.atualizarpassivo(this.sum)
+
+      console.log('passivo atualizado com sucesso')
 
 
         })
