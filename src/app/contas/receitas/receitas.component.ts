@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, map } from 'rxjs';
 import { Conta } from 'src/app/modelos/conta';
+import { LancamentoService } from 'src/app/servicos/lancamento.service';
 
 @Component({
   selector: 'app-receitas',
@@ -16,7 +17,7 @@ export class ReceitasComponent implements OnInit {
   sum: number;
 
 
-  constructor(private fs: AngularFirestore){}
+  constructor(private fs: AngularFirestore, private ls: LancamentoService){}
 
     ngOnInit(){
       this.receitas$ =this.fs.collection('contas', (ref) => ref.where('natureza','==',"receita").where('ativa','==', true).orderBy('cod', 'asc')).get().pipe(map((result)=> this.convertSnaps<Conta>(result)));
@@ -37,11 +38,10 @@ export class ReceitasComponent implements OnInit {
       console.log(this.sum)
 
 
+      this.ls.atualizarreceitatotal(this.sum)
+
+      console.log('resultado acumulado atualizado com sucesso')
         })
-
-
-
-
  }
 
 
@@ -54,12 +54,7 @@ export class ReceitasComponent implements OnInit {
       ...<any> snap.data()
 
 
-
  }
   })
  }}
-{
 
-}{
-
-}

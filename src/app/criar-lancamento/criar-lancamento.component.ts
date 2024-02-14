@@ -34,13 +34,9 @@ export class CriarLancamentoComponent implements OnInit {
   ngOnInit() {
     this.lancamentoForm();
     this.contas$ = this.fs
-      .collection('contas', (ref) => ref.where('ativa','==',true).orderBy('cod', 'asc'))
+      .collection('contas', (ref) => ref.where('ativa','==',true).orderBy('conta', 'asc'))
       .get()
       .pipe(map((result) => this.convertSnaps<Conta>(result)));
-
-    console.log(this.contas$);
-
-
   }
   convertSnaps<T>(results) {
     return <T[]>results.docs.map((snap) => {
@@ -67,7 +63,7 @@ export class CriarLancamentoComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.lctosForm.value.log);
+
     let splitted_deb = this.lctosForm.value.conta_debitada.split('-');
     let splitted_cred = this.lctosForm.value.conta_creditada.split('-');
     console.log(splitted_deb);
@@ -104,11 +100,10 @@ export class CriarLancamentoComponent implements OnInit {
     this.ls.saveData(lctogravar);
     let id = cont_debid;
     let id2 = cont_cred;
-    
+
     let valor = valorainc;
     this.ls.debitar(id, valor);
     this.ls.creditar (id2, valor);
-
 
 
 
@@ -118,12 +113,5 @@ export class CriarLancamentoComponent implements OnInit {
 
 
   }
-
-
-  async consultarSaldo(){
-
-
-
-}
 
 }

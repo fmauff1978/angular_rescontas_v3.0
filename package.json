@@ -19,7 +19,7 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
-    "firebase": "^9.16.0",
+    "firebase": "^9.23.0",
     "firesql": "^2.0.2",
     "ngx-toastr": "^18.0.0",
     "rxfire": "^6.0.3",

@@ -21,6 +21,9 @@ agregados$: Observable<Agregado[]> | undefined;
 formCategory: string | undefined;
 formStatus: string = "Adicionar";
 agregadoId: string | undefined;
+val: any = {};
+sum: number;
+valor: number;
 
 
 
@@ -29,10 +32,26 @@ agregadoId: string | undefined;
   ngOnInit(){
 
     this.agregados$ =this.fs.collection('agregados', (ref) => ref.orderBy('cod', 'asc')).get().pipe(map((result)=> this.convertSnaps<Agregado>(result)));
-
-
-
     console.log(this.agregados$)
+
+    this.fs.collection('agregados').valueChanges().subscribe(value => {
+
+
+      this.val = value;
+      console.log(this.val);
+
+
+      this.sum = this.val.reduce( function( a, b ) {
+        return a + b.saldo_atual;
+    }, 0 );
+
+
+    console.log(this.sum)
+
+    
+
+
+      })
 
 
   }
@@ -51,14 +70,6 @@ agregadoId: string | undefined;
    }
     })
    }
-
-
-
-
-
-
-
-
 
 
       }

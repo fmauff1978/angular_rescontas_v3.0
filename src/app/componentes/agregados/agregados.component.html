@@ -25,7 +25,8 @@
                     <th>Código</th>
                     <th>Agregado</th>
                     <th>Saldo Atual</th>
-                    <th>Ações</th>
+                    <th>Posição</th>
+
 
 
                   </tr>
@@ -37,8 +38,9 @@
                     <td>{{cat.cod}}</td>
                     <td> {{cat.nome}}</td>
                     <td> {{cat.saldo_atual | currency}}</td>
-                    <td> <i class="bi bi-pencil" ></i> <i class="bi bi-trash3"
-                        ></i> </td>
+                    <td> {{cat.log.seconds * 1000 | date: 'dd/MM/yyyy HH:mm' }}</td>
+
+
 
 
 
@@ -49,7 +51,9 @@
 
               </table>
 
-
+  <div>
+    <p> A soma dos agregados é {{sum|currency}}</p>
+  </div>
 
             </div>
 

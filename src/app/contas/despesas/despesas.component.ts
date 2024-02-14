@@ -5,6 +5,7 @@ import { Observable, map } from 'rxjs';
 import { Conta } from 'src/app/modelos/conta';
 import { Lancamento } from 'src/app/modelos/lancamento';
 import { AggregateField, Firestore, collection } from 'firebase/firestore';
+import { LancamentoService } from 'src/app/servicos/lancamento.service';
 
 @Component({
   selector: 'app-despesas',
@@ -18,12 +19,12 @@ export class DespesasComponent implements OnInit {
   sum: number;
 
 
-  constructor(private fs: AngularFirestore){}
+  constructor(private fs: AngularFirestore, private ls: LancamentoService){}
 
     async ngOnInit(){
 
 
-      this.despesas$ =this.fs.collection('contas', (ref) => ref.where('natureza','==',"despesa").where('ativa','==', true).orderBy('enquadramento', 'asc')).get().pipe(map((result)=> this.convertSnaps<Conta>(result)));
+      this.despesas$ =this.fs.collection('contas', (ref) => ref.where('natureza','==',"despesa").where('ativa','==', true).orderBy('saldo', 'desc')).get().pipe(map((result)=> this.convertSnaps<Conta>(result)));
 
       console.log(this.despesas$)
 
@@ -40,7 +41,15 @@ export class DespesasComponent implements OnInit {
 
 
       console.log(this.sum)
+
+      this.ls.atualizardespesatotal(this.sum)
+
+      console.log('despesa total atualizada com sucesso')
+
+
         })
+
+
     }
 
  convertSnaps<T>(results){
