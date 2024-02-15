@@ -71,6 +71,10 @@ export class CriarLancamentoComponent implements OnInit {
 
     const cont_debid = splitted_deb[0];
     const cont_cred = splitted_cred[0];
+    const bucket_despdeb = splitted_deb[5];
+    const bucket_desprec = splitted_cred[5];
+
+
 
 
     const lctogravar: Lancamento = {
@@ -91,8 +95,6 @@ export class CriarLancamentoComponent implements OnInit {
                         mod_despesa_cred: splitted_cred[5]},
       valor: this.lctosForm.value.valor,
       log: Timestamp.now()
-
-
     }
 
     const valorainc = this.lctosForm.value.valor;
@@ -100,10 +102,31 @@ export class CriarLancamentoComponent implements OnInit {
     this.ls.saveData(lctogravar);
     let id = cont_debid;
     let id2 = cont_cred;
-
     let valor = valorainc;
+    let bucket = bucket_despdeb;
+    let bucket2 = bucket_desprec;
     this.ls.debitar(id, valor);
     this.ls.creditar (id2, valor);
+
+    if (bucket =="gerenciável"){
+      this.ls.debitarbucketger(valor)
+    } else if (bucket =="compromissada"){
+      this.ls.debitarbucketcomp(valor)
+    }else if (bucket =="off"){
+      this.ls.debitarbucketoff(valor)
+     }else {
+      console.log("lancamento sem despesas a debito")
+    }
+
+    if (bucket2 =="gerenciável"){
+      this.ls.creditarbucketger(valor)
+    } else if (bucket2 =="compromissada"){
+      this.ls.creditarbucketcomp(valor)
+    }else if(bucket2=="off"){
+      this.ls.creditarbucketoff(valor)
+     }else {
+      console.log("lancamento sem despesas a credito")
+    }
 
 
 

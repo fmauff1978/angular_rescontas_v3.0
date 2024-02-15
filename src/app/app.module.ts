@@ -28,6 +28,7 @@ import { ReceitasComponent } from './contas/receitas/receitas.component';
 import { ResultadoComponent } from './contas/resultado/resultado.component';
 import { TodasContasComponent } from './contas/todas-contas/todas-contas.component';
 import { RazaoComponent } from './contas/razao/razao.component';
+import { BucketComponent } from './componentes/contas/bucket/bucket.component';
 
 
 
@@ -50,7 +51,8 @@ registerLocaleData(ptBr);
     ReceitasComponent,
     ResultadoComponent,
     TodasContasComponent,
-    RazaoComponent
+    RazaoComponent,
+    BucketComponent
 
   ],
   imports: [

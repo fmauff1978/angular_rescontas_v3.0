@@ -40,9 +40,13 @@ export class AtivoComponent implements OnInit {
       this.ls.atualizarativo(this.sum)
 
       console.log('ativo atualizado com sucesso')
-
-
         })}
+
+
+
+
+
+
 
  convertSnaps<T>(results){
 

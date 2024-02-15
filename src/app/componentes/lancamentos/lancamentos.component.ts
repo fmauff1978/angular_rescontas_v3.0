@@ -29,7 +29,6 @@ export class LancamentosComponent implements OnInit {
 
       this.lancamento$ =this.fs.collection('lancamentos', (ref) => ref.orderBy('log', 'desc')).get().pipe(map((result)=> this.convertSnaps<Lancamento>(result)));
 
-    console.log(this.lancamento$)
 
   }
 

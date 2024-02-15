@@ -11,6 +11,7 @@ import { CriarLancamentoComponent } from './criar-lancamento/criar-lancamento.co
 import { AtivoComponent } from './contas/ativo/ativo.component';
 import { ResultadoComponent } from './contas/resultado/resultado.component';
 import { RazaoComponent } from './contas/razao/razao.component';
+import { BucketComponent } from './componentes/contas/bucket/bucket.component';
 
 const routes: Routes = [
 
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'despesas', component: DespesasComponent},
   {path: 'receitas', component: ReceitasComponent},
   {path: 'resultado', component: ResultadoComponent},
-  {path: 'razao', component: RazaoComponent}
+  {path: 'razao', component: RazaoComponent},
+  {path: 'bucket', component: BucketComponent}
 
 
 ];
