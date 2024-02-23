@@ -3,16 +3,14 @@
 
 </header>
 <div class="table-responsive">
-  <table class="table align-middle;table table-striped"  style="width:100%">
+  <table class="table align-center;table table-striped"  style="width:100%">
   <thead>
     <tr>
 
       <th>Código</th>
       <th>Conta</th>
-
-
       <th>Saldo</th>
-
+      <th>Posicao</th>
 
     </tr>
   </thead>
@@ -22,14 +20,8 @@
 
       <td>{{conta.cod}}</td>
       <td>{{conta.conta}}</td>
-
-
-
       <td align="center">{{conta.saldo|currency}}</td>
-
-
-
-
+      <td align="center">{{conta.log.toDate()|date:'dd/MM/yyyy, HH:mm'}}</td>
 
 
 

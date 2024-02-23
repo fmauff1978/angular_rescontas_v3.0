@@ -1,0 +1,35 @@
+
+<div class="table-responsive">
+  <table class="table align-middle;table table-striped"  style="width:100%">
+  <thead>
+    <tr>
+
+      <th>Código</th>
+      <th>KPI</th>
+      <th align="center">Objetivo</th>
+      <th>Realizado</th>
+      <th>Atingimento</th>
+      <th>Posição</th>
+
+
+    </tr>
+  </thead>
+  <tbody class="table-group-divider;pagination">
+
+    <tr *ngFor= "let val of kpi$|async "class="align-center" >
+
+      <td>{{val.cod}}</td>
+      <td>{{val.nome}}</td>
+      <td align="center">{{val.orcado|currency}}</td>
+      <td>{{val.realizado|currency}}</td>
+      <td>{{this.atg|percent: '2.2-2'}}</td>
+      <td align="center">{{val.log.toDate()|date:'dd/MM/yyyy, HH:mm'}}</td>
+
+    </tr>
+
+
+  </tbody>
+</table>
+
+
+</div>

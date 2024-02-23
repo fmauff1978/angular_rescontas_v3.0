@@ -14,6 +14,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CriarAgregadoComponent } from './criar-agregado/criar-agregado.component';
@@ -29,6 +30,8 @@ import { ResultadoComponent } from './contas/resultado/resultado.component';
 import { TodasContasComponent } from './contas/todas-contas/todas-contas.component';
 import { RazaoComponent } from './contas/razao/razao.component';
 import { BucketComponent } from './componentes/contas/bucket/bucket.component';
+import { DshComponent } from './dsh/dsh.component';
+import { CartaoparceladoComponent } from './cartaoparcelado/cartaoparcelado.component';
 
 
 
@@ -52,7 +55,9 @@ registerLocaleData(ptBr);
     ResultadoComponent,
     TodasContasComponent,
     RazaoComponent,
-    BucketComponent
+    BucketComponent,
+    DshComponent,
+    CartaoparceladoComponent
 
   ],
   imports: [

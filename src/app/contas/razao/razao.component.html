@@ -6,31 +6,31 @@
   <table class="table align-middle;table table-striped"  style="width:100%">
   <thead>
     <tr>
-    
+
       <th>Código</th>
       <th>Data do Lançamento</th>
-    
+
       <th>Conta Debitada</th>
-      
+
       <th>Conta Creditada</th>
-      
+
       <th>Valor</th>
-     
+
 
     </tr>
   </thead>
   <tbody class="table-group-divider;pagination">
 
-    <tr *ngFor= "let lcto of razao$|async ;let i = index " class="align-center" >
-   
+    <tr *ngFor= "let lcto of conta$|async ;let i = index " class="align-center" >
+
       <td>{{i+1}}</td>
-      <td>{{lcto.datadolancamento}}</td>
-     
-      <td>{{lcto.conta_debitada}}</td>
-      <td>{{lcto.conta_creditada}}</td>
-      
-      <td align="center">{{lcto.valor|currency}}</td>
-      
+      <td></td>
+
+      <td></td>
+      <td></td>
+
+      <td align="center"></td>
+
 
 
 

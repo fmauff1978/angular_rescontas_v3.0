@@ -9,10 +9,9 @@
 
       <th>Código</th>
       <th>Conta</th>
-
       <th>Enquadramento</th>
-
       <th>Saldo</th>
+      <th>Posicao</th>
 
 
     </tr>
@@ -20,28 +19,17 @@
   <tbody class="table-group-divider;pagination">
 
     <tr *ngFor= "let conta of passivos$|async" class="align-center" >
-
       <td>{{conta.cod}}</td>
       <td>{{conta.conta}}</td>
-
       <td>{{conta.enquadramento}}</td>
-
       <td align="center">{{conta.saldo|currency}}</td>
-
-
-
-
-
-
-
+      <td align="center">{{conta.log.toDate()|date:'dd/MM/yyyy, HH:mm'}}</td>
     </tr>
-
 
   </tbody>
 </table>
 
 <div>
   <p> TOTAL DO PASSIVO  {{sum|currency}}</p>
-
-  </div>
+</div>
 

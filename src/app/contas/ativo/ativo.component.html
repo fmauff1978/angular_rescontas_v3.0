@@ -9,10 +9,10 @@
 
       <th>Código</th>
       <th>Conta</th>
-
       <th>Enquadramento</th>
-
       <th>Saldo</th>
+      <th>Posição</th>
+
 
 
     </tr>
@@ -23,10 +23,11 @@
 
       <td>{{conta.cod}}</td>
       <td>{{conta.conta}}</td>
-
       <td>{{conta.enquadramento}}</td>
-
       <td class="valor" align="center">{{conta.saldo|currency}}</td>
+      <td align="center">{{conta.log.toDate()|date:'dd/MM/yyyy, HH:mm'}}</td>
+
+
     </tr>
 
 

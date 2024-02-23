@@ -2,6 +2,7 @@ import { Lancamento } from 'src/app/modelos/lancamento';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, map } from 'rxjs';
+import { Conta } from 'src/app/modelos/conta';
 
 
 
@@ -12,19 +13,39 @@ import { Observable, map } from 'rxjs';
 })
 export class RazaoComponent implements OnInit {
 
-  razao$: Observable<Lancamento[]>;
+  razaodebitada$: Observable<Lancamento[]>;
+  conta$: Observable<Conta[]>;
+  val: any = {};
 
-  contarazao: string = "BB";
+
 
 
   constructor(private fs: AngularFirestore){}
 
     ngOnInit(){
 
-      this.razao$ = this.fs.collection('lancamentos', (ref) => ref.where('conta_debitada','==',this.contarazao).orderBy('datadolancamento', 'asc')).get().pipe(map((result)=> this.convertSnaps<Lancamento>(result)));
 
-     
-      console.log(this.razao$)
+
+
+
+      this.fs.collection('contas', (ref)=> ref.where('ativa', '==', 'true')).valueChanges().subscribe(value => {
+
+
+        this.val = value;
+        console.log(this.val);})
+
+
+        
+
+
+
+
+
+
+     // this.razaodebitada$ = this.fs.collection('lancamentos', (ref) => ref.where('conta_debitada','==',this.conta$).orderBy('datadolancamento', 'desc')).get().pipe(map((result)=> this.convertSnaps<Lancamento>(result)));
+
+
+    //  console.log(this.razaodebitada$)
 
 
 

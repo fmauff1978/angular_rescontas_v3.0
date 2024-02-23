@@ -1,3 +1,4 @@
+import { Timestamp } from "@firebase/firestore";
 
 
   export interface Conta {
@@ -10,7 +11,7 @@
     mod_despesa: Mod_Despesa;
     ativa: boolean;
     saldo: number;
-    log: Date;
+    log: Timestamp;
 
 
   }

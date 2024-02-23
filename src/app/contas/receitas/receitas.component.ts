@@ -40,7 +40,7 @@ export class ReceitasComponent implements OnInit {
 
       this.ls.atualizarreceitatotal(this.sum)
 
-      console.log('resultado acumulado atualizado com sucesso')
+      console.log('receita atualizada com sucesso')
         })
  }
 
@@ -52,9 +52,6 @@ export class ReceitasComponent implements OnInit {
     return{
       id:snap.id,
       ...<any> snap.data()
-
-
  }
   })
  }}
-
