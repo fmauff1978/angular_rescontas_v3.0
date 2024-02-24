@@ -1,4 +1,4 @@
-import { collection, AggregateField } from 'firebase/firestore';
+
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, map } from 'rxjs';
@@ -41,7 +41,7 @@ export class AtivoComponent implements OnInit {
       console.log('ativo atualizado com sucesso')
        })
 
-//totalizar saldo para atualizar meta aposentadoria
+      //totalizar saldo para atualizar meta aposentadoria
         this.fs.collection('contas', (ref)=> ref.where('enquadramento', '==', 'investimento')).valueChanges().subscribe(value => {
           this.valinvest = value;
           console.log(this.valinvest);

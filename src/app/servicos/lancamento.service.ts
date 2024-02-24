@@ -115,6 +115,13 @@ atualizarkpi(valor){
 
 }
 
+  async gravarParcela(parcelamento){
+
+  const res = await this.fs.collection('parcelamentos').add(parcelamento);
+    this.ts.success('Parcelamento criado com ID: ', res.id);
+    this.router.navigate(['/parcelado'])
+}
+
 
 
 

@@ -32,6 +32,7 @@ import { RazaoComponent } from './contas/razao/razao.component';
 import { BucketComponent } from './componentes/contas/bucket/bucket.component';
 import { DshComponent } from './dsh/dsh.component';
 import { CartaoparceladoComponent } from './cartaoparcelado/cartaoparcelado.component';
+import { CartaoparceladoListComponent } from './cartaoparcelado-list/cartaoparcelado-list.component';
 
 
 
@@ -57,7 +58,8 @@ registerLocaleData(ptBr);
     RazaoComponent,
     BucketComponent,
     DshComponent,
-    CartaoparceladoComponent
+    CartaoparceladoComponent,
+    CartaoparceladoListComponent
 
   ],
   imports: [

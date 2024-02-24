@@ -1,0 +1,44 @@
+
+
+<div class="table-responsive">
+  <table class="table align-middle;table table-striped"  style="width:100%">
+  <thead>
+    <tr>
+
+      <th>Data da Compra</th>
+      <th>Descrição</th>
+      <th>Cartão Vinculado</th>
+      <th>Origem</th>
+      <th>Qtde Parcelas</th>
+      <th>Valor Parcelas</th>
+      <th>Valor Compra</th> 
+      <th>Ultima Parcela</th>     
+      <th>Posição</th>
+    </tr>
+
+  </thead>
+
+  <tbody class="table-group-divider">
+
+    <tr *ngFor= "let conta of parcelamento$|async" class="align-center" >
+
+      <td>{{conta.datadacompra| date:'dd/MM/yyyy'}}</td>
+      <td>{{conta.descricao}}</td>
+      <td>{{conta.cartaovinculado.nome}}</td>
+      <td>{{conta.origem}}</td>
+      <td>{{conta.qtdedeparcelas}}</td>
+      <td>{{conta.valorparcela|currency}}</td>
+      <td>{{conta.valorcompra|currency}}</td>
+      <td>{{conta.ultimaparcela.toDate() | date: 'dd/MM/yyyy'}}</td>
+      <td>{{conta.log.toDate()|date:'dd/MM/yyyy, HH:mm'}}</td>   
+
+    </tr>
+
+
+
+  </tbody>
+</table>
+</div>
+
+
+

@@ -1,1 +1,57 @@
-<p>cartaoparcelado works!</p>
+
+<div class="w3-row-padding w3-center w3-padding-64" id="pricing">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 bg-secondary-theme p-5">
+        <h3 class="text-center text-theme-primary"> Novo parcelamento</h3>
+        <form [formGroup]="cartaoparcForm" class="form-inline text-center" (ngSubmit)="onSubmit()">
+
+          <div class="form-group col-md-10 mb-3">
+            <label>Data da Compra</label>
+            <input type="date" formControlName="datadacompra" class="form-control shadow-effect"
+              placeholder="Data da compra">
+          </div>
+          <div class="form-group col-md-10 mb-3">
+            <label>Descrição</label>
+            <input type="text" formControlName="descricao" class="form-control shadow-effect"
+              placeholder="Adicione a descrição do Lançamento">
+          </div>
+          <div class="form-group col-md-10 mb-3">
+            <label>Cartão Vinculado</label>
+            <select class="form-control" formControlName="cartaovinculado">
+              <option value=" " disabled>Selecione </option>
+              <option *ngFor="let cat of cartao$|async"
+              value="{{cat.id}}-{{cat.cod}}-{{cat.conta}}-{{cat.enquadramento}}">{{cat.conta}}</option>
+            </select>
+          </div>
+
+          <div class="form-group col-md-10 mb-3">
+            <label>Origem</label>
+            <input type="text" formControlName="origem" class="form-control shadow-effect"
+              placeholder="Adicione a origem do Lançamento">
+          </div>
+
+          <div class="form-group col-md-10 mb-3">
+            <label>Quantidade de Parcelas</label>
+            <input type="number" formControlName="qtde_parcelas" class="form-control shadow-effect"
+              placeholder="Adicione a qtde de parcelas">
+          </div>
+
+          <div class="form-group col-md-10 mb-3">
+            <label>Data da Primeira Parcela</label>
+            <input type="date" formControlName="data_parcela" class="form-control shadow-effect"
+              placeholder="Adicione a data da primeira parcela">
+          </div>
+          <div class="form-group col-md-10 mb-3">
+            <label>Valor da Parcela</label>
+            <input type="number" formControlName="valor_parcela" class="form-control shadow-effect"
+              placeholder="Adicione o valor da parcela">
+          </div>
+
+          <div class="col-md-2">
+            <button class="btn btn-block btn-info mb-2 btn-theme"> Lançar </button>
+          </div>
+        </form>
+      </div>
+<app-cartaoparcelado-list></app-cartaoparcelado-list>
+

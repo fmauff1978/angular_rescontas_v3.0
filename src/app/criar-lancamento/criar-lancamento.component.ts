@@ -2,15 +2,12 @@ import { LancamentoService } from './../servicos/lancamento.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ContaService } from '../servicos/conta.service';
-import { FieldValue, serverTimestamp } from 'firebase/firestore';
 import { Observable, map } from 'rxjs';
 import { Conta, MyDate } from '../modelos/conta';
 import { ToastrService } from 'ngx-toastr';
 import { Lancamento } from '../modelos/lancamento';
 import { Query, Timestamp, collection, getAggregateFromServer, query, queryEqual, sum, where } from '@angular/fire/firestore';
 
-import * as firebase from 'firebase/app';
 
 
 @Component({

@@ -1,3 +1,5 @@
+import { CartaoparceladoListComponent } from './cartaoparcelado-list/cartaoparcelado-list.component';
+import { CartaoparceladoComponent } from './cartaoparcelado/cartaoparcelado.component';
 import { ReceitasComponent } from './contas/receitas/receitas.component';
 import { DespesasComponent } from './contas/despesas/despesas.component';
 import { PassivoComponent } from './contas/passivo/passivo.component';
@@ -27,7 +29,11 @@ const routes: Routes = [
   {path: 'receitas', component: ReceitasComponent},
   {path: 'resultado', component: ResultadoComponent},
   {path: 'razao', component: RazaoComponent},
-  {path: 'bucket', component: BucketComponent}
+  {path: 'bucket', component: BucketComponent},
+  {path: 'parcelado', component: CartaoparceladoComponent}
+
+
+
 
 
 ];
