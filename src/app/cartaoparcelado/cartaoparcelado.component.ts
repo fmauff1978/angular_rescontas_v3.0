@@ -1,11 +1,14 @@
 import { cartaoparcelado } from './../modelos/cartaoparcelado';
-import { Timestamp } from '@angular/fire/firestore';
+import { Timestamp, collectionChanges, collectionData, query, where } from '@angular/fire/firestore';
 import { Component, OnInit } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Conta } from '../modelos/conta';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { LancamentoService } from '../servicos/lancamento.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import * as firebase from "firebase/app";
+import { Firestore, collection} from 'firebase/firestore';
+
 
 
 @Component({
@@ -21,54 +24,29 @@ export class CartaoparceladoComponent implements OnInit {
   data_atual: Date;
   val: any = {}
 
-
   constructor(private fs: AngularFirestore, private ls: LancamentoService, private fb: FormBuilder){}
 
     async ngOnInit() {
 
+
+      //inicia formulario
        this.parcForm();
 
-       this.cartao$ =this.fs.collection('contas', (ref) => ref.where('enquadramento','==',"rotativo").where('ativa','==', true)).get().pipe(map((result)=> this.convertSnaps<Conta>(result)));  
-
-       this.parcelamento$ =this.fs.collection('parcelamentos', (ref) => ref.where('ativa','==',true)).get().pipe(map((result)=> this.convertSnaps<cartaoparcelado>(result)));
-
-       this.data_atual = new Date();
-       console.log(this.data_atual)
-
-       this.fs.collection('parcelamentos', (ref)=> ref.where('ativa', '==', true)).valueChanges().subscribe(value => {
+      //parametros para selecionar o cartao
+       this.cartao$ =this.fs.collection('contas', (ref) => ref.where('enquadramento','==',"rotativo").where('ativa','==', true)).get().pipe(map((result)=> this.convertSnaps<Conta>(result)));
+      
+      //array com os documentos da colecao firestore incluindo os id 
+       this.fs.collection('parcelamentos', (ref)=> ref.where('ativa', '==', true)).valueChanges({idField: 'id'}).subscribe(value => {
         this.val = value;
-        console.log(this.val)
+        console.log(this.val)        
 
-        for (const key in this.val)
-{
-   // Get the strongly typed value with this name:
-   const vat = this.val[key];
-   console.log(vat)
-  
-   // Now we have the the strongly typed value for this key (depending on how bigObject was typed in the first place).
-   
-   // Do something interesting with the property of bigObject...
-}
+     })
+
+      
+
+   }
+
      
-      
-       
-        for (let x in this.val){
-          
-         
-        }
-      
-      
-      
-      }) 
-
-
-           
-      
-       }
-             
-
-
-
 parcForm() {
   this.cartaoparcForm = this.fb.group({
     datadacompra: [' '],
@@ -78,7 +56,6 @@ parcForm() {
     qtde_parcelas: [' '],
     data_parcela: [' '],
     valor_parcela: [' '],
-    
     ativa: true,
     log: [Timestamp.now()],
   });
@@ -101,23 +78,15 @@ onSubmit() {
  // console.log(ano)
   //console.log(a)
 
-  let dataJS = new Date (ano, mes-1, dia);
-  console.log(dataJS)
 
-
- 
+let dataJS = new Date (ano, mes-1, dia);
+console.log(dataJS)
 const today = dataJS;
 const monthsToAdd = a;
 const newDate = this.addMonths(today, monthsToAdd);
 console.log("Data atual:", today);
 console.log("Data após adicionar", monthsToAdd, "meses:", newDate);
-
-
-var ultimaparcela = Timestamp.now();
-
-
-
-
+var ultimaparcela = Timestamp.fromDate(newDate);
   //console.log(primeiraparcela);
  // console.log(cardvinculado);
   //console.log(dia)
@@ -148,12 +117,12 @@ var ultimaparcela = Timestamp.now();
     valorcompra: compra,
     juros: 0,
     ativa: true,
-    cod: Date.now(),
+    cod:`${Date.now()}`,
     ultimaparcela: ultimaparcela,
     parcelasrestantes: null,
     saldorestante: null,
     log: Timestamp.now(),
-    id: ''
+   
   }
 
 this.ls.gravarParcela(parcelamentogravar)
@@ -166,9 +135,7 @@ ResetForm() {
   this.cartaoparcForm.reset();
 }
 
-dateFromString(str) {
-  return new Date(str);
-}
+
 
 addMonths(date, months) {
   const newDate = new Date(date.valueOf());
@@ -186,7 +153,7 @@ addMonths(date, months) {
 subMonths(date, months) {
   const newDate = new Date(date.valueOf());
   const currentMonth = newDate.getMonth();
-  const newMonth = currentMonth - months;
+  const newMonth =  months - currentMonth;
   newDate.setMonth(newMonth);
   // Verifique se o dia do mês mudou após adicionar os meses
   if (newDate.getDate() !== date.getDate()) {

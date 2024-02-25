@@ -122,8 +122,27 @@ atualizarkpi(valor){
     this.router.navigate(['/parcelado'])
 }
 
+atualizarparcelazerada(id){
+
+ let debito = this.fs.doc(`parcelamentos/${id}`) 
+  debito.update({ativa: false});
+  debito.update({parcelasrestantes: 0});
+  debito.update({saldorestante: 0});
+  debito.update({log: Timestamp.now()});
+}
+
+
+atualizarparcelaemser(id, qtde, valor){
+
+
+  let debito = this.fs.doc(`parcelamentos/${id}`)  
+  debito.update({parcelasrestantes: (qtde)});
+  debito.update({saldorestante: (valor)});
+  debito.update({log: Timestamp.now()});
+  let debito10 = this.fs.collection('update').doc('cjMX9mVVDtulRmNpbMzZ');
+  debito10.update({posicao: Timestamp.now()});
+}
 
 
 
 }
-

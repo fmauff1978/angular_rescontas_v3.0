@@ -3,9 +3,9 @@ import { Timestamp } from "@firebase/firestore";
 
 export interface cartaoparcelado {
 
-id: string;
+
   datadacompra: Date;
-  cod: number;
+  cod: string;
   descricao: string;
   cartaovinculado: {cod: number, nome: string, enquadramento:string}
   origem: string;

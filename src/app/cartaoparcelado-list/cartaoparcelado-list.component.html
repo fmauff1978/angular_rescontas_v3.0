@@ -11,9 +11,10 @@
       <th>Origem</th>
       <th>Qtde Parcelas</th>
       <th>Valor Parcelas</th>
-      <th>Valor Compra</th> 
-      <th>Ultima Parcela</th>     
-      <th>Posição</th>
+      <th>Parcelas Restantes</th> 
+      <th>Ultima Parcela</th>   
+      <th>Saldo Restante</th>  
+     
     </tr>
 
   </thead>
@@ -28,9 +29,10 @@
       <td>{{conta.origem}}</td>
       <td>{{conta.qtdedeparcelas}}</td>
       <td>{{conta.valorparcela|currency}}</td>
-      <td>{{conta.valorcompra|currency}}</td>
+      <td>{{conta.parcelasrestantes}}</td>
       <td>{{conta.ultimaparcela.toDate() | date: 'dd/MM/yyyy'}}</td>
-      <td>{{conta.log.toDate()|date:'dd/MM/yyyy, HH:mm'}}</td>   
+      <td>{{conta.saldorestante|currency}}</td>
+      
 
     </tr>
 
@@ -38,6 +40,14 @@
 
   </tbody>
 </table>
+
+<div *ngFor= "let conta of val"> 
+  <p> Ultima Posicao {{conta.posicao.toDate()|date:'dd/MM/yyyy, HH:mm'}}</p>
+</div>
+
+<div class="col-md-2">
+  <button class="btn btn-block btn-info mb-2 btn-theme" (click)="refresh()"> Atualizar</button>
+</div>
 </div>
 
 
