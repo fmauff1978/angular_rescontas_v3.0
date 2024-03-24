@@ -22,6 +22,7 @@
     "firebase": "^9.23.0",
     "firebase-tools": "^12.9.1",
     "firesql": "^2.0.2",
+    "moment": "^2.30.1",
     "ngx-toastr": "^18.0.0",
     "rxfire": "^6.0.3",
     "rxjs": "~7.8.0",

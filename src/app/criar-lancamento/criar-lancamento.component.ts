@@ -78,6 +78,7 @@ export class CriarLancamentoComponent implements OnInit {
 
       datadolancamento: this.lctosForm.value.datadolancamento,
       descricao: this.lctosForm.value.descricao,
+      cod: `${Date.now()}`,
       conta_debitada: {contadeb_id: splitted_deb[0],
                       cod_deb: splitted_deb[1],
                       contadeb: splitted_deb[2],

@@ -27,12 +27,15 @@ import { PassivoComponent } from './contas/passivo/passivo.component';
 import { DespesasComponent } from './contas/despesas/despesas.component';
 import { ReceitasComponent } from './contas/receitas/receitas.component';
 import { ResultadoComponent } from './contas/resultado/resultado.component';
-import { TodasContasComponent } from './contas/todas-contas/todas-contas.component';
+
 import { RazaoComponent } from './contas/razao/razao.component';
 import { BucketComponent } from './componentes/contas/bucket/bucket.component';
 import { DshComponent } from './dsh/dsh.component';
 import { CartaoparceladoComponent } from './cartaoparcelado/cartaoparcelado.component';
 import { CartaoparceladoListComponent } from './cartaoparcelado-list/cartaoparcelado-list.component';
+import { TesteComponent } from './cartaoparcelado/teste/teste.component';
+import { CdcComponent } from './cdc/cdc.component';
+import { CdcCriarComponent } from './cdc-criar/cdc-criar.component';
 
 
 
@@ -54,12 +57,15 @@ registerLocaleData(ptBr);
     DespesasComponent,
     ReceitasComponent,
     ResultadoComponent,
-    TodasContasComponent,
+
     RazaoComponent,
     BucketComponent,
     DshComponent,
     CartaoparceladoComponent,
-    CartaoparceladoListComponent
+    CartaoparceladoListComponent,
+    TesteComponent,
+    CdcComponent,
+    CdcCriarComponent
 
   ],
   imports: [

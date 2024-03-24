@@ -39,12 +39,6 @@
                     <td> {{cat.nome}}</td>
                     <td> {{cat.saldo_atual | currency}}</td>
                     <td> {{cat.log.seconds * 1000 | date: 'dd/MM/yyyy HH:mm' }}</td>
-
-
-
-
-
-
                   </tr>
                 </tbody>
 
@@ -53,6 +47,8 @@
 
   <div>
     <p> A soma dos agregados é {{sum|currency}}</p>
+  
+    <p> O superavit atual é de {{super|currency}} </p>
   </div>
 
             </div>

@@ -1,0 +1,56 @@
+<header class="header d-flex">
+  <h5 class="ff-inter">Meus Financiamentos<i class="bi bi-plus-square" [routerLink]="['/criar-cdc']"></i></h5>
+
+</header>
+
+<div class="table-responsive">
+  <table class="table align-middle;table table-striped"  style="width:100%">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Cod</th>
+      <th>Data da Compra</th>
+      <th>Descrição</th>
+      <th>Conta Vinculada</th>
+      <th>Qtde Parcelas</th>
+      <th>Valor Parcelas</th>
+      <th>Parcelas Restantes</th>
+      <th>Ultima Parcela</th>
+      <th>Saldo Devedor Atual</th>
+
+    </tr>
+
+  </thead>
+
+  <tbody class="table-group-divider">
+
+    <tr *ngFor= "let conta of val ; let i = index " class="align-center" >
+
+      <th align="center">{{i+1}}</th>
+      <td>{{conta.cod}}</td>
+      <td>{{conta.datadatransacao|date:'dd/MM/yyyy'}}</td>
+      <td>{{conta.descricao}}</td>
+      <td>{{conta.contavinculada.nome}}</td>
+       <td>{{conta.qtdedeparcelas}}</td>
+      <td>{{conta.valorparcela|currency}}</td>
+      <td>{{conta.parcelasrestantes}}</td>
+      <td>{{conta.ultimaparcela.toDate() | date: 'dd/MM/yyyy'}}</td>
+      <td>{{conta.sdo_dev_atual|currency}}</td>
+
+    </tr>
+
+
+
+  </tbody>
+</table>
+
+<div>
+  <p> Ultima Posicao: {{this.atualizado_em|date:'dd/MM/yyyy, HH:mm'}}</p>
+</div>
+
+
+
+
+</div>
+
+

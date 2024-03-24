@@ -5,6 +5,7 @@ export interface Lancamento {
 
 
   datadolancamento: Date;
+  cod: string;
   descricao: string;
   conta_debitada: { contadeb_id: string,
     cod_deb: number;

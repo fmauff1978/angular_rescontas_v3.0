@@ -1,29 +1,30 @@
 
+
+<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
 <div class="table-responsive">
-  <table class="table align-middle;table table-striped"  style="width:100%">
+  <table  class = "sortable" class="table align-middle;table table-striped"  style="width:100%">
   <thead>
     <tr>
-
+      <th>#</th>
       <th>Código</th>
-      <th>KPI</th>
+      <th>Despesa</th>
+      <th>Tipo</th>
       <th align="center">Objetivo</th>
       <th>Realizado</th>
       <th>Atingimento</th>
-      <th>Posição</th>
-
-
     </tr>
   </thead>
   <tbody class="table-group-divider;pagination">
 
-    <tr *ngFor= "let val of kpi$|async "class="align-center" >
+    <tr *ngFor= "let x of fonte;let i = index  " class="align-center"  >
 
-      <td>{{val.cod}}</td>
-      <td>{{val.nome}}</td>
-      <td align="center">{{val.orcado|currency}}</td>
-      <td>{{val.realizado|currency}}</td>
-      <td>{{this.atg|percent: '2.2-2'}}</td>
-      <td align="center">{{val.log.toDate()|date:'dd/MM/yyyy, HH:mm'}}</td>
+      <th align="center">{{i+1}}</th>
+      <td>{{x.cod}}</td>
+      <td>{{x.conta}}</td>
+      <td>{{x.mod_despesa}}</td>
+      <td align="center">{{this.diasdec*x.gd|currency}}</td>
+      <td>{{x.saldo|currency}}</td>
+      <td>{{x.saldo/(this.diasdec*x.gd)|percent: '2.2-2'}}</td>
 
     </tr>
 
@@ -33,3 +34,4 @@
 
 
 </div>
+

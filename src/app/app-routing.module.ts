@@ -1,3 +1,5 @@
+import { CdcComponent } from './cdc/cdc.component';
+import { TesteComponent } from './cartaoparcelado/teste/teste.component';
 import { CartaoparceladoListComponent } from './cartaoparcelado-list/cartaoparcelado-list.component';
 import { CartaoparceladoComponent } from './cartaoparcelado/cartaoparcelado.component';
 import { ReceitasComponent } from './contas/receitas/receitas.component';
@@ -14,6 +16,7 @@ import { AtivoComponent } from './contas/ativo/ativo.component';
 import { ResultadoComponent } from './contas/resultado/resultado.component';
 import { RazaoComponent } from './contas/razao/razao.component';
 import { BucketComponent } from './componentes/contas/bucket/bucket.component';
+import { CdcCriarComponent } from './cdc-criar/cdc-criar.component';
 
 const routes: Routes = [
 
@@ -30,10 +33,11 @@ const routes: Routes = [
   {path: 'resultado', component: ResultadoComponent},
   {path: 'razao', component: RazaoComponent},
   {path: 'bucket', component: BucketComponent},
-  {path: 'parcelado', component: CartaoparceladoComponent}
-
-
-
+  {path: 'parcelado', component: CartaoparceladoListComponent},
+  {path: 'teste', component: TesteComponent},
+  {path: 'criar-parcelado', component: CartaoparceladoComponent},
+  {path: 'criar-cdc', component: CdcCriarComponent},
+  {path: 'cdc', component: CdcComponent}
 
 
 ];

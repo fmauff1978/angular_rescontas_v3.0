@@ -122,25 +122,45 @@ atualizarkpi(valor){
     this.router.navigate(['/parcelado'])
 }
 
+async gravarCDC(cdc){
+
+  const res = await this.fs.collection('financiamentos').add(cdc);
+    this.ts.success('CDC criado com ID: ', res.id);
+    this.router.navigate(['/cdc'])
+}
+
 atualizarparcelazerada(id){
 
- let debito = this.fs.doc(`parcelamentos/${id}`) 
+ let debito = this.fs.doc(`parcelamentos/${id}`)
   debito.update({ativa: false});
   debito.update({parcelasrestantes: 0});
   debito.update({saldorestante: 0});
   debito.update({log: Timestamp.now()});
 }
 
+atualizarparcelaemser(id: string, qtde: number, valor: number){
 
-atualizarparcelaemser(id, qtde, valor){
 
+  let debito15 =  this.fs.collection('parcelamentos').doc(id);
+ debito15.update({parcelasrestantes: (qtde)})
+ debito15.update({saldorestante: (valor)})
+  debito15.update({sv: true})
+ debito15.update({log: Timestamp.now()})
 
-  let debito = this.fs.doc(`parcelamentos/${id}`)  
-  debito.update({parcelasrestantes: (qtde)});
-  debito.update({saldorestante: (valor)});
-  debito.update({log: Timestamp.now()});
   let debito10 = this.fs.collection('update').doc('cjMX9mVVDtulRmNpbMzZ');
-  debito10.update({posicao: Timestamp.now()});
+ debito10.update({posicao: Timestamp.now()})
+}
+
+
+atualizar_cdc(id: string, qtde: number, valor: number){
+
+
+  let debito15 = this.fs.collection('financiamentos').doc(id);
+  debito15.update({parcelasrestantes: (qtde)})
+  debito15.update({sdo_dev_atual: (valor)})
+  debito15.update({log: Timestamp.now()})
+
+
 }
 
 

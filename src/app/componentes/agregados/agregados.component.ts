@@ -18,12 +18,14 @@ import { AgregadoService } from 'src/app/servicos/agregado.service';
 export class AgregadosComponent implements OnInit {
 
 agregados$: Observable<Agregado[]> | undefined;
-formCategory: string | undefined;
-formStatus: string = "Adicionar";
+
 agregadoId: string | undefined;
 val: any = {};
 sum: number;
 valor: number;
+  desptotal: any ={};
+  rectotal: any = {};
+  super: number;
 
 
 
@@ -32,28 +34,29 @@ valor: number;
   ngOnInit(){
 
     this.agregados$ =this.fs.collection('agregados', (ref) => ref.orderBy('cod', 'asc')).get().pipe(map((result)=> this.convertSnaps<Agregado>(result)));
-    console.log(this.agregados$)
+
+
+
 
     this.fs.collection('agregados').valueChanges().subscribe(value => {
-
-
       this.val = value;
       console.log(this.val);
-
 
       this.sum = this.val.reduce( function( a, b ) {
         return a + b.saldo_atual;
     }, 0 );
-
-
     console.log(this.sum)
-
-    
-
-
       })
 
+      this.fs.collection('agregados', (ref) => ref.where('cod','in', [301,401])).valueChanges().subscribe(x=>{
+        this.desptotal = x;
 
+        var subtraendo = this.desptotal[0].saldo_atual;
+        var minuendo = this.desptotal[1].saldo_atual;
+        let superavit = (minuendo+subtraendo)*(-1)
+        this.super = superavit;
+        console.log(this.super)
+      })
   }
 
 
@@ -77,10 +80,7 @@ valor: number;
 
 
 
-      //const res = await this.fs.collection('categories').add(categoryData);
-
-     // console.log('Documento criado com ID: ', res.id);
-
+      
 
 
 

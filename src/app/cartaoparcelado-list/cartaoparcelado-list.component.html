@@ -1,28 +1,34 @@
+<header class="header d-flex">
+  <h5 class="ff-inter">Meus Parcelamentos<i class="bi bi-plus-square" [routerLink]="['/criar-parcelado']"></i></h5>
 
+</header>
 
 <div class="table-responsive">
   <table class="table align-middle;table table-striped"  style="width:100%">
   <thead>
     <tr>
-
+      <th>#</th>
+      <th>Cod</th>
       <th>Data da Compra</th>
       <th>Descrição</th>
       <th>Cartão Vinculado</th>
       <th>Origem</th>
       <th>Qtde Parcelas</th>
       <th>Valor Parcelas</th>
-      <th>Parcelas Restantes</th> 
-      <th>Ultima Parcela</th>   
-      <th>Saldo Restante</th>  
-     
+      <th>Parcelas Restantes</th>
+      <th>Ultima Parcela</th>
+      <th>Saldo Restante</th>
+
     </tr>
 
   </thead>
 
   <tbody class="table-group-divider">
 
-    <tr *ngFor= "let conta of parcelamento$|async" class="align-center" >
+    <tr *ngFor= "let conta of parcelamento$|async ; let i = index " class="align-center" >
 
+      <th align="center">{{i+1}}</th>
+      <td>{{conta.cod}}</td>
       <td>{{conta.datadacompra| date:'dd/MM/yyyy'}}</td>
       <td>{{conta.descricao}}</td>
       <td>{{conta.cartaovinculado.nome}}</td>
@@ -32,7 +38,6 @@
       <td>{{conta.parcelasrestantes}}</td>
       <td>{{conta.ultimaparcela.toDate() | date: 'dd/MM/yyyy'}}</td>
       <td>{{conta.saldorestante|currency}}</td>
-      
 
     </tr>
 
@@ -41,13 +46,22 @@
   </tbody>
 </table>
 
-<div *ngFor= "let conta of val"> 
-  <p> Ultima Posicao {{conta.posicao.toDate()|date:'dd/MM/yyyy, HH:mm'}}</p>
+<p> TOTAL SALDO RESTANTE PARCELADO {{sum|currency}}</p>
+<p> TOTAL PARCELAS MENSAIS  {{parctotalmes|currency}}</p>
+
 </div>
 
 <div class="col-md-2">
   <button class="btn btn-block btn-info mb-2 btn-theme" (click)="refresh()"> Atualizar</button>
 </div>
+
+<div *ngFor= "let conta of atualizacao$| async">
+  <p> Ultima Posicao: {{conta.posicao.toDate()|date:'dd/MM/yyyy, HH:mm'}}</p>
+</div>
+
+<div>
+
+
 </div>
 
 
